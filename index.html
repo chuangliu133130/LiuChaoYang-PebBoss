@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .nav {
+            color: black;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 400px;
+            margin: 0px auto;
+            border: 0px solid #ccc;
+
+
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .ue-banbtn {
+
+        }
+
+        body {
+            border: 0 solid white;
+        }
+
+        * {
+            border: 0 solid white;
+        }
+    </style>
+    <!-- 引入 Swipe 库 -->
+    <link rel="stylesheet" href="dist/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <script src="dist/js/swiper-bundle.min.js"></script>
+
+    <el-container style="padding: 0px;margin-top:0px;margin-bottom: 0px;margin-left: 0px;margin-right:0px ">
+        <!--  导航栏目el-header-->
+        <div style="overflow: hidden">
+            <el-header>
+                <img src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/logo.png" alt=""
+                     width="181px"
+                     height="60px">
+                <span style="position: absolute ;padding-left: 100px">
+
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+             text-color="black" active-text-color="#c9a96f">
+        <el-menu-item index="1"> 首页</el-menu-item>
+        <el-submenu index="2">
+            <template slot="title">系统介绍</template>
+            <el-menu-item index="2-1" style="width: 80px">宠老板介绍</el-menu-item>
+            <el-menu-item index="2-2" style="width: 80px">宠付宝介绍</el-menu-item>
+            <el-menu-item index="2-3" style="width: 80px">宠老板小程序</el-menu-item>
+            <el-menu-item index="2-4" style="width: 80px">宠赞管理系统</el-menu-item>
+        </el-submenu>
+                <el-menu-item index="3"> 系统下载</el-menu-item>
+                <el-menu-item index="4"> 进货商城</el-menu-item>
+                <el-menu-item index="5"> 商学院</el-menu-item>
+        <el-submenu index="6">
+            <template slot="title"><a class="nav" href="javascript:void(0)" style="text-decoration: none" @click="f(6)">关于宠老板</a></template>
+            <el-menu-item index="6-1" style="width: 80px">行业资讯</el-menu-item>
+            <el-menu-item index="6-2" style="width: 80px">常见问题</el-menu-item>
+            <el-menu-item index="6-3" style="width: 80px">视频教程</el-menu-item>
+            <el-menu-item index="6-4" style="width: 80px">公司公告</el-menu-item>
+            <el-menu-item index="6-5" style="width: 80px">硬件购买</el-menu-item>
+        </el-submenu>
+    </el-menu>
+    </span>
+                <input type="button"
+                       style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; position: absolute ; right: 150px ;top:10px;"
+                       value="快速注册" @click="reg()"></input>
+                <input type="button"
+                       style="border: 1px solid #FAE132; border-radius: 4px; width: 60px;height: 34px ; background-color: white ; position: absolute ; right: 50px ;top:10px;"
+                       value="登陆" @click="login()"></input>
+            </el-header>
+        </div>
+
+
+        <!--  main 主界面el-main-->
+
+        <el-main style="padding: 0;margin: 0">
+            <span style="position: absolute">
+            <img src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/bannerbg_2.jpg" alt=""
+                 style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+         </span>
+
+            <!--第一组轮播图swipeslice===开始-->
+            <el-row gutter="0" style="height: 600px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                <el-col span="24" style="height: 600px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                    <div class="swiper-container"
+                         style="height: 600px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                        <div class="swiper-wrapper"
+                             style="height: 600px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                            <div class="swiper-slide"
+                                 style="height: 600px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                                <input class="ue-banbtn" value="免费试用" type="button" @click="freeusebtnclick()"
+                                       style="border-radius: 25px; width: 156px;height: 50px ; left:150px ;top:380px;pxcolor: black;position:  absolute ; background-color: transparent ; cursor: pointer;border: 1px solid">
+
+                                <img src="./imgs/slide1.png" alt=""
+                                     style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+
+
+                            </div>
+
+                            <div class="swiper-slide"
+                                 style="height: 600px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                                <img src="./imgs/slide2.png" alt=""
+                                     style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+                                <input class="ue-banbtn" value="登陆宠赞系统" type="button" @click="loginbtnclick()"
+                                       style="border-radius: 25px; width: 156px;height: 50px ; left:150px ;top:430px;pxcolor: black;position:  absolute ; background-color: transparent ; cursor: pointer;border: 1px solid">
+
+                                <input class="ue-banbtn" value="宠赞系统演示" type="button" @click="petshowbtnclick()"
+                                       style="border-radius: 25px; width: 156px;height: 50px ; left:330px ;top:430px;pxcolor: black;position:  absolute ; background-color: transparent ; cursor: pointer;border: 1px solid">
+
+
+                            </div>
+                            <div class="swiper-slide" style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+                                <img src="./imgs/slide3.png" alt=""
+                                     style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+                                <input class="ue-banbtn" value="扫码演示" type="button" @click="scanbtnclick()"
+                                       style="border-radius: 25px; width: 156px;height: 50px ; left:150px ;top:380px;pxcolor: black;position:  absolute ; background-color: transparent ; cursor: pointer; border: 1px solid">
+
+                            </div>
+                            <div class="swiper-slide" style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+                                <img src="./imgs/slide4.png" alt=""
+                                     style="height: 600px ;width: 100% ;margin: 0;padding: 0">
+
+                            </div>
+                        </div>
+                        <!-- 添加分页器 -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </el-col>
+            </el-row>
+            <!--            第一组轮播图swipeslice===结束-->
+
+
+            <h1 style="font-size: 40px;font-weight: bold;text-align: center;line-height: 40px;height: 40px; margin: 0;padding: 0;margin-top: 15px;margin-bottom: 15px">
+                宠物店都在用的管理系统</h1>
+
+
+            <!--            第二组轮播开始-->
+
+            <el-row gutter="0" style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                <el-col span="24" style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                    <div class="swiper-container"
+                         style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                        <div class="swiper-wrapper"
+                             style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+                            <!--            第二组轮播第一波开始-->
+
+                            <div span="24" class="swiper-slide"
+                                 style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                                <el-row gutter="0">
+                                    <el-col span="12">
+
+                                        <img style="border-radius: 10px;"
+                                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/index_011.jpg"
+                                             alt=""
+                                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                                    </el-col>
+
+
+                                    <el-col span="12">
+                                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                                            高效管理宠物店</p>
+                                        <p style="text-align: left">
+                                            专为宠物店量身打造的宠物店管理系统，抛弃传统的管理方式和习惯，高效管理店铺。完善的商品收银功能、会员管理、寄养管理、商品进销存、库存预警、产品调拨等。</p>
+                                        <input type="button"
+                                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                                               value="点击了解" @click="konwbtnclick()"></input>
+
+                                    </el-col>
+
+                                </el-row>
+
+
+                            </div>
+                            <!--            第二组轮播第二波开始-->
+
+                            <div span="24" class="swiper-slide"
+                                 style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                                <el-row gutter="0">
+                                    <el-col span="12">
+                                        <img style="border-radius: 10px;"
+                                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/pro1.png"
+                                             alt=""
+                                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                                    </el-col>
+                                    <el-col span="12">
+
+                                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                                            解决宠物店推广难题</p>
+                                        <p style="text-align: left">
+                                            专宠物店微信小程序全面来袭，宠老板教你玩转小程序，打造一个属于自己的宠物店微商城。全新流量入口，高级店铺展示，增加您的店铺曝光和认知，提高客户量。</p>
+                                        <input type="button"
+                                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                                               value="点击了解" @click="konwSecondbtnclick()"></input>
+
+
+                                    </el-col>
+                                </el-row>
+                            </div>
+
+                        </div>
+                        <!-- 添加分页器 -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </el-col>
+            </el-row>
+            <!--第二组轮播结束-->
+
+
+            <h1 style="font-size: 40px;font-weight: bold;text-align: center;line-height: 40px;height: 40px; margin: 0;padding: 0;margin-top: 15px;margin-bottom: 15px">
+                让宠物店生意更简单</h1>
+
+
+            <div span="24"
+                 style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                <el-row gutter="0">
+                    <el-col span="12">
+
+                        <img style="border-radius: 10px;padding-left: 15px"
+                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/pro1.png"
+                             alt=""
+                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                    </el-col>
+
+
+                    <el-col span="12">
+                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                            宠物店首选的智慧经营管理系统</p>
+                        <p style="font-size: 20px;font-weight: bold ;text-align: left">
+                            让宠物店生意管理更加高效</p>
+                        <p style="text-align: left ; width: 90%;">
+                            宠老板采用现主流的云框架技术，数据云端储存，多重加密永不丢失；并且支持连锁门店的会员互通，会员卡消费记录实时共享等跨店操作。宠老板还支持电脑、手机、平板、商米等设备使用。</p>
+                        <input type="button"
+                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                               value="点击了解" @click="konwbtnclick()"></input>
+
+                    </el-col>
+
+                </el-row>
+
+
+            </div>
+
+
+            <div span="24"
+                 style="height: 400px ;width: 100% ;margin: 0;padding: 0;border: 0 solid white;">
+
+                <el-row gutter="0">
+
+
+                    <el-col span="12" style="padding-left: 30px">
+                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                            移动看店，手机即可连接一切 </p>
+                        <p style="font-size: 25px;font-weight: bold ;text-align: left">
+                            手机、电脑同时管理宠物店 </p>
+                        <p style="text-align: left; width: 90%;">
+                            手机、电脑同时管理店铺，要多方便就有多方便。数据同步，电脑不在身边，手机就能实现收银结账、库存盘点、寄养安排等服务。
+                            每日收益数据打开宠老板手机版就能全部了解，不再错过每一笔账单，收益清晰让心里更有 “数”。</p>
+                        <input type="button"
+                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                               value="点击了解" @click="konwbtnclick()"></input>
+
+                    </el-col>
+
+                    <el-col span="12">
+
+                        <img style="border-radius: 10px;"
+                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/pro2.png"
+                             alt=""
+                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                    </el-col>
+
+                </el-row>
+
+
+                <el-row gutter="0">
+                    <el-col span="12">
+
+                        <img style="border-radius: 10px;padding-left: 15px"
+                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/pro3.png"
+                             alt=""
+                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                    </el-col>
+
+
+                    <el-col span="12">
+                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                            小程序，让客户圈子更宽广</p>
+                        <p style="font-size: 20px;font-weight: bold ;text-align: left">
+                            为宠物店打造一个自己专属的线上微商城</p>
+                        <p style="text-align: left ; width: 90%;">
+                            宠老板管理系统为宠物店免费开发一个专属的微信小程序。针对宠大部分物店的经营痛点，宠老板团队提供全方位的技术支持。。
+                            <br>
+                            <br>
+
+                            在线预约，提高效率，解决排队等候问题。
+                            宠老板小程序不仅能增加宠物店与客户的粘度，还能吸引更多的宠友的眼球，有效提升宠物店品牌宣传影响力度，带动其他商品的销量，提高营业额！
+                        </p>
+
+                        <input type="button"
+                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                               value="点击了解" @click="konwbtnclick()"></input>
+
+                    </el-col>
+
+                </el-row>
+
+
+                <el-row gutter="0">
+
+
+                    <el-col span="12" style="padding-left: 30px">
+                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                            宠付宝，收银管理更简单 </p>
+                        <p style="font-size: 25px;font-weight: bold ;text-align: left">
+                            安全、高效、便捷的移动支付工具 </p>
+                        <p style="text-align: left; width: 90%;">
+                            宠付宝是尊宠科技倾力打造的安全、高效、便捷的移动支付工具，集成了微信、支付宝、花呗、信用卡等多种支付方式。实现更低费率，更安全的移动支付工具。
+                            宠付宝超强的系统兼容性跨平台支持钱箱、扫码枪、小票机等主流收银设备，为宠物商家实现移动支付提供了一体化解决方案。</p>
+                        <input type="button"
+                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                               value="点击了解" @click="konwbtnclick()"></input>
+
+                    </el-col>
+
+                    <el-col span="12">
+
+                        <img style="border-radius: 10px;"
+                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/pro4.png"
+                             alt=""
+                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                    </el-col>
+
+                </el-row>
+
+                <el-row gutter="0">
+                    <el-col span="12">
+
+                        <img style="border-radius: 10px;padding-left: 15px"
+                             src="https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/pro5.png"
+                             alt=""
+                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                    </el-col>
+
+
+                    <el-col span="12">
+                        <p style="font-size: 30px;font-weight: bold ;text-align: left">
+                            智慧经营，营销推广更有效</p>
+                        <p style="font-size: 20px;font-weight: bold ;text-align: left">
+                            为宠物店打造一个自己专属的线上微商城</p>
+                        <p class="wow fadeInUp" data-wow-delay="0.3s">
+                            店铺经营分析、商业客流/客群洞察、精准营销、行业分析、竞品分析、对标分析、商址评估、客流预测。
+                            <br>
+                            <br>
+
+                            能提供全数据链管理，更能帮宠物店用技术和数据提升商业运营管理。
+                            数据统计、支付营销、精准营销、信息推送等智能化的经营实操和业务唤醒功能让客户粘度更高、业务更精准。
+                        </p>
+
+                        <input type="button"
+                               style="border: none; border-radius: 4px; width: 98px;height: 34px ; background-color: #FAE132 ; "
+                               value="点击了解" @click="konwbtnclick()"></input>
+
+                    </el-col>
+
+                </el-row>
+                <el-row gutter="0">
+                    <el-col span="24">
+                        <center>
+                            <div style="margin-top: 15px; margin-bottom: 15px ; height: 50px">
+                                <a style="color: black; text-decoration: none;font-size: 20px;font-weight: bold" id="f1"
+                                   href="javascript:void(0)" @click="f1()">行业资讯|</a>
+                                <a style="color: black;text-decoration: none;font-size: 20px;font-weight: bold" id="f2"
+                                   href="javascript:void(0)" @click="f2()">常见问题|</a>
+                                <a style="color: black;text-decoration: none;font-size: 20px;font-weight: bold" id="f3"
+                                   href="javascript:void(0)" @click="f3()">视频教程</a>
+
+                            </div>
+                        </center>
+
+                    </el-col>
+
+
+                </el-row>
+
+                <el-row gutter="0">
+                    <el-col span="12">
+
+                        <img style="border-radius: 10px;padding-left: 15px"
+
+                             :src="bottomurl"
+                             alt=""
+                             style="height: 300px ;width: 100% ;margin-top: 30px;margin-bottom: 20px;margin-left: 20px;">
+
+                    </el-col>
+
+
+                    <el-col style=" overflow: scroll;margin: 10px 0" span="12" v-for="p in toparr">
+                        <el-card style="width: 80% ; height: 100px">
+                            <p style="font-size: 14px;height: 30px">{{p.title}}</p>
+                            <p style="font-size: 14px;height: 30px">{{p.time}}</p>
+
+                        </el-card>
+                    </el-col>
+
+                </el-row>
+
+            </div>
+
+
+        </el-main>
+
+
+        <!--  footer 主界面el-footer-->
+        <el-footer>Create by 刘朝阳</el-footer>
+
+    </el-container>
+</div>
+</body>
+
+
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                user: {username: "", password: ""},
+                activeIndex: '1',
+                activeIndex2: '1',
+                toparr: [{
+                    title: "猫狗饲养增多，上海宠物管理立法时机如何？最新答复来.",
+                    time: "发布时间：2023-04-27"
+                }, {
+                    title: "您收到宠老板的一封 它博会邀请函，请注意查收",
+                    time: "发布时间：2023-04-20"
+                }, {title: "【一年一度触店大会】官宣：为了你的宠物店，我们是时.", time: "发布时间：2023-04-12"}],
+                bottomurl: "https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/guanwang/n3.jpg",
+                hangyezixundata: {
+                    url: "https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/guanwang/n3.jpg",
+                    arr: [{
+                        title: "猫狗饲养增多，上海宠物管理立法时机如何？最新答复来.",
+                        time: "发布时间：2023-04-27"
+                    }, {
+                        title: "您收到宠老板的一封 它博会邀请函，请注意查收",
+                        time: "发布时间：2023-04-20"
+                    }, {title: "【一年一度触店大会】官宣：为了你的宠物店，我们是时.", time: "发布时间：2023-04-12"}, {
+                        title: "猫狗饲养增多，上海宠物管理立法时机如何？最新答复来.",
+                        time: "发布时间：2023-04-27"
+                    }, {
+                        title: "您收到宠老板的一封 它博会邀请函，请注意查收",
+                        time: "发布时间：2023-04-20"
+                    }, {title: "【一年一度触店大会】官宣：为了你的宠物店，我们是时.", time: "发布时间：2023-04-12"}, {
+                        title: "猫狗饲养增多，上海宠物管理立法时机如何？最新答复来.",
+                        time: "发布时间：2023-04-27"
+                    }, {
+                        title: "您收到宠老板的一封 它博会邀请函，请注意查收",
+                        time: "发布时间：2023-04-20"
+                    }, {title: "【一年一度触店大会】官宣：为了你的宠物店，我们是时.", time: "发布时间：2023-04-12"}]
+                },
+
+                shipinjiaochengdata: {
+                    url: "https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/guanwang/n2.jpg",
+                    arr: [{title: "如何批量导入产品", time: "发布时间：2023-04-27"}, {
+                        title: "如何设置语音提醒",
+                        time: "发布时间：2023-04-20"
+                    }, {title: "查询商品到期时间", time: "发布时间：2023-04-12"}]
+                },
+
+
+                changjianwentidata: {
+                    url: "https://www.chonglaoban.cn/Application/Modules/Index/Tpl/Public/images/guanwang/n1.jpg",
+                    arr: [{
+                        title: "门店营销_（7.0版本 · 手机端教程）",
+                        time: "发布时间：2023-04-27"
+                    }, {
+                        title: "打印设置_（7.0版本 · 手机端教程",
+                        time: "发布时间：2023-04-20"
+                    }, {title: "系统设置（7.0版本 · 手机端教程）.", time: "发布时间：2023-04-12"}]
+                },
+
+
+            }
+        },
+        methods: {
+
+            f1() {
+
+                v.toparr = v.hangyezixundata.arr;
+                v.bottomurl = v.changjianwentidata.url;
+
+            },
+            f2() {
+                v.toparr = v.changjianwentidata.arr;
+                v.bottomurl = v.changjianwentidata.url;
+
+            },
+            f3() {
+                v.toparr = v.shipinjiaochengdata.arr;
+                v.bottomurl = v.shipinjiaochengdata.url;
+            },
+
+            freeusebtnclick(x) {
+                alert("免费试用")
+            },
+            loginbtnclick() {
+                alert("登陆宠赞系统")
+
+            },
+            petshowbtnclick() {
+                alert("宠赞系统演示")
+
+            },
+            konwbtnclick() {
+                alert("点击了解")
+
+            },
+            konwSecondbtnclick() {
+                alert("点击了解")
+
+
+            },
+            scanbtnclick() {
+                alert("扫码演示")
+
+            },
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    })
+</script>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // 设置图片轮播效果
+        effect: 'slide',
+        // 设置自动轮播
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
+        // 添加分页器
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+    });
+</script>
+
+
+</html>
